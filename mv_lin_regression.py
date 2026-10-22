@@ -30,3 +30,41 @@ print(y_train)
 b_init = 785.1811367994083
 w_init = np.array([ 0.39133535, 18.75376741, -53.36032453, -26.42131618])
 print(f"w_init shape: {w_init.shape}, b_init type: {type(b_init)}")
+
+# single prediction via loop function
+def predict_single_loop(x, w, b):
+    """
+    single predict using linear regression
+
+    Args:
+    x – ndarray of shape (n,) with multiple features
+    w – ndarray of shape (n,) model parameters
+    b – scalar model parameter
+
+    Returns:
+    p – scalar prediction
+    """
+
+    # first element of the shape yields number of rows
+    n = x.shape[0]
+
+    # p is initiated to 0
+    p = 0
+
+    for i in range(n):
+        # multiply w * x for this index
+        p_i = x[i] * w[i]
+
+        # add the result to the p
+        p += p_i
+
+    # add the scalar model parameter
+    p += b
+
+    return p
+
+# make a prediction for the first row of the training data
+f_wb = predict_single_loop(X_train[0,:], w_init, b_init)
+print(f"f_wb shape {f_wb.shape}, prediction: {f_wb}")
+
+
