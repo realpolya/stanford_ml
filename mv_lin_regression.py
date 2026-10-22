@@ -67,7 +67,7 @@ def predict_single_loop(x, w, b):
 f_wb = predict_single_loop(X_train[0,:], w_init, b_init)
 print(f"loop: f_wb shape {f_wb.shape}, prediction: {f_wb}")
 
-# a dot product vector function
+# a dot product vector function to make prediction
 def predict(x, w, b):
     """
     single predict using linear regression using numpy dot product
@@ -84,5 +84,42 @@ def predict(x, w, b):
     p = np.dot(x, w) + b
     return p
 
+# make a prediction for the first row using dot product
 f_wb = predict(X_train[0,:], w_init, b_init)
 print(f"dot product: f_wb shape {f_wb.shape}, prediction: {f_wb}")
+
+# compute cost with multiple variables
+def compute_cost(X, y, w, b):
+    """
+    compute cost via cost function J summing up the squared 
+    differences between predictions and actual results and 
+    dividing the sum by 2m where m is number of examples
+
+    args:
+    X – ndarray of shape (m,n) – m examples with n features
+    y – ndarray of shape (m,) – target values
+    w – ndarray of shape (n,) – model parameters
+    b – scalar model parameter
+
+    returns:
+    cost – scalar
+    """
+
+    # number of training examples extracted from the np array
+    m = X.shape[0]
+
+    # initialize cost to its minimum
+    cost = 0.0
+
+    # loop through each row in X sample adding to the cost 
+    for i in range(m):
+        f_wb_i = np.dot(X[i], w) + b
+        cost += (f_wb_i - y[i])**2
+
+    # divide the cost sum by 2m
+    cost /= 2*m
+    return cost
+
+cost = compute_cost(X_train, y_train, w_init, b_init)
+print(f'Cost J at optimal w: {cost}')
+
