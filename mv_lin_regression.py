@@ -123,3 +123,4 @@ def compute_cost(X, y, w, b):
 cost = compute_cost(X_train, y_train, w_init, b_init)
 print(f'Cost J at optimal w: {cost}')
 
+# gradient descent with multiple variables
