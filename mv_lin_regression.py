@@ -34,7 +34,7 @@ print(f"w_init shape: {w_init.shape}, b_init type: {type(b_init)}")
 # single prediction via loop function
 def predict_single_loop(x, w, b):
     """
-    single predict using linear regression
+    single predict using linear regression using loop
 
     Args:
     x – ndarray of shape (n,) with multiple features
@@ -65,6 +65,24 @@ def predict_single_loop(x, w, b):
 
 # make a prediction for the first row of the training data
 f_wb = predict_single_loop(X_train[0,:], w_init, b_init)
-print(f"f_wb shape {f_wb.shape}, prediction: {f_wb}")
+print(f"loop: f_wb shape {f_wb.shape}, prediction: {f_wb}")
 
+# a dot product vector function
+def predict(x, w, b):
+    """
+    single predict using linear regression using numpy dot product
 
+    Args:
+    x – ndarray of shape (n,) with multiple features
+    w – ndarray of shape (n,) model parameters
+    b – scalar model parameter
+
+    Returns:
+    p – scalar prediction
+    """
+
+    p = np.dot(x, w) + b
+    return p
+
+f_wb = predict(X_train[0,:], w_init, b_init)
+print(f"dot product: f_wb shape {f_wb.shape}, prediction: {f_wb}")
