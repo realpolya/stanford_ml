@@ -165,3 +165,9 @@ tmp_dj_dw, tmp_dj_db = compute_gradient(X_train, y_train, w_init, b_init)
 print(f'dj_db at initial w,b: {tmp_dj_db}')
 print(f'dj_dw at initial w,b: \n {tmp_dj_dw}')
 
+# gradient descent with convergence and learning rate alpha
+def gradient_descent(X, y, w_in, b_in, cost_fn, gradient_fn, alpha, num_iters):
+
+    n = 0
+
+    return n
