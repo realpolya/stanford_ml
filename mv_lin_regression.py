@@ -167,7 +167,23 @@ print(f'dj_dw at initial w,b: \n {tmp_dj_dw}')
 
 # gradient descent with convergence and learning rate alpha
 def gradient_descent(X, y, w_in, b_in, cost_fn, gradient_fn, alpha, num_iters):
+    """
+    Performs batch gradient descent to learn w and b. Updates w and b
+    by taking num_iters gradient steps with learning rate alpha.
+    Args:
+    X – ndarray of shape (m,n) – m examples with n features
+    y – ndarray of shape (m,) – target values
+    w_in – ndarray of shape (n,) – initial model parameters
+    b_in – scalar initial model parameter
+    cost_fn – function to compute cost
+    gradient_fn – function to compute the gradient
+    alpha – float – learning rate
+    num_iters – integer – number of iterations to run gradient descent
 
+    returns:
+    w – ndarray of shape (n,) – updated values of parameters
+    b – scalar – updated value of parameter
+    """
     n = 0
 
     return n
