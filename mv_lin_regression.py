@@ -184,6 +184,14 @@ def gradient_descent(X, y, w_in, b_in, cost_fn, gradient_fn, alpha, num_iters):
     w – ndarray of shape (n,) – updated values of parameters
     b – scalar – updated value of parameter
     """
-    n = 0
 
-    return n
+    # define an array for storing history to create a graph later
+    J_history = []
+
+    # avoid mofidying global w within function
+    w = copy.deepcopy(w_in)
+    b = b_in
+
+    
+
+    return w, b
