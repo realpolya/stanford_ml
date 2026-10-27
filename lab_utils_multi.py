@@ -302,6 +302,11 @@ def plot_cost_i_w(X,y,hist):
     ax[1].plot(wr, cst); ax[1].set_title("Cost vs w[0]")
     ax[1].set_xlabel("w[0]"); ax[1].set_ylabel("Cost")
     ax[1].plot(ws[:,0],hist["cost"])
+
+    # disable scientific notation – added by PS
+    ax[0].ticklabel_format(style='plain', axis='y')
+    ax[1].ticklabel_format(style='plain', axis='y')
+
     plt.show()
 
  
