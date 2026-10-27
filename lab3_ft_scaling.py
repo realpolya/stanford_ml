@@ -27,12 +27,28 @@ for i in range(len(ax)):
     ax[i].scatter(X_train[:,i],y_train)
     ax[i].set_xlabel(X_features[i])
 ax[0].set_ylabel("Price (1000's)")
-plt.show()
+# TODO: enable plt.show() below to see the first plot
+#plt.show()
 
 # experiment with learning rate
 # it takes some testing to pick the most efficient learning rate
-# set alpha to 9.9e-7
+# v1: set alpha to 9.9e-7
 _, _, hist = run_gradient_descent(X_train, y_train, 10, alpha = 9.9e-7)
 
-# plot the result of this alpha rate
-plot_cost_i_w(X_train, y_train, hist)
+# plot the result of this alpha rate – the overshooting is visible
+#plot_cost_i_w(X_train, y_train, hist)
+
+# v2: set alpha to 9e-7 (smaller value)
+_,_,hist = run_gradient_descent(X_train, y_train, 50, alpha = 9e-7)
+
+# plot the v2 alpha rate – the cost is decreasing and is arriving at the global minimum
+# but it is still oscillating back and forth
+# the solution is converging
+# plot_cost_i_w(X_train, y_train, hist)
+
+# v3: set alpha to 1e-7
+_,_,hist = run_gradient_descent(X_train, y_train, 10, alpha = 1e-7)
+# this v3 solution is converging without oscillations
+# dj_w0 is negative throughout this run
+plot_cost_i_w(X_train,y_train,hist)
+
