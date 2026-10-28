@@ -78,33 +78,70 @@ def zscore_normalize_features(X):
     # element-wise, subtract mu for that column from each example
     # divide by std for that column according to the
     # z score normalization formula
+
+    # step one: remove the mean from each x
+    # step two: divide by standard deviation
     X_norm = (X - mu) / sigma
 
     return (X_norm, mu, sigma)
 
 # plot the steps involved in z score normalization
-mu     = np.mean(X_train,axis=0)   
-sigma  = np.std(X_train,axis=0) 
-X_mean = (X_train - mu)
-X_norm = (X_train - mu)/sigma      
+# TODO: uncomment to see the plots
 
-fig,ax=plt.subplots(1, 3, figsize=(12, 3))
-ax[0].scatter(X_train[:,0], X_train[:,3])
-ax[0].set_xlabel(X_features[0]); ax[0].set_ylabel(X_features[3]);
-ax[0].set_title("unnormalized")
-ax[0].axis('equal')
+# mu     = np.mean(X_train,axis=0)   
+# sigma  = np.std(X_train,axis=0) 
+# X_mean = (X_train - mu)
+# X_norm = (X_train - mu)/sigma      
 
-ax[1].scatter(X_mean[:,0], X_mean[:,3])
-ax[1].set_xlabel(X_features[0]); ax[0].set_ylabel(X_features[3]);
-ax[1].set_title(r"X - $\mu$")
-ax[1].axis('equal')
+# fig,ax=plt.subplots(1, 3, figsize=(12, 3))
+# ax[0].scatter(X_train[:,0], X_train[:,3])
+# ax[0].set_xlabel(X_features[0]); ax[0].set_ylabel(X_features[3]);
+# ax[0].set_title("unnormalized")
+# ax[0].axis('equal')
 
-ax[2].scatter(X_norm[:,0], X_norm[:,3])
-ax[2].set_xlabel(X_features[0]); ax[0].set_ylabel(X_features[3]);
-ax[2].set_title(r"Z-score normalized")
-ax[2].axis('equal')
-plt.tight_layout(rect=[0, 0.03, 1, 0.95])
-fig.suptitle("distribution of features before, during, after normalization")
+# ax[1].scatter(X_mean[:,0], X_mean[:,3])
+# ax[1].set_xlabel(X_features[0]); ax[0].set_ylabel(X_features[3]);
+# ax[1].set_title(r"X - $\mu$")
+# ax[1].axis('equal')
+
+# ax[2].scatter(X_norm[:,0], X_norm[:,3])
+# ax[2].set_xlabel(X_features[0]); ax[0].set_ylabel(X_features[3]);
+# ax[2].set_title(r"Z-score normalized")
+# ax[2].axis('equal')
+# plt.tight_layout(rect=[0, 0.03, 1, 0.95])
+# fig.suptitle("distribution of features before, during, after normalization")
+# plt.show()
+
+# normalize the original features
+X_norm, X_mu, X_sigma = zscore_normalize_features(X_train)
+print(f"X_mu = {X_mu}, \nX_sigma = {X_sigma}")
+print(f"Peak to Peak range by column in Raw        X:{np.ptp(X_train,axis=0)}")   
+print(f"Peak to Peak range by column in Normalized X:{np.ptp(X_norm,axis=0)}")
+
+# plot the distribution before normalization
+fig,ax=plt.subplots(1, 4, figsize=(12, 3))
+for i in range(len(ax)):
+    norm_plot(ax[i],X_train[:,i],)
+    ax[i].set_xlabel(X_features[i])
+ax[0].set_ylabel("count");
+fig.suptitle("distribution of features before normalization")
 plt.show()
+
+# plot the distribution after normalization
+fig,ax=plt.subplots(1,4,figsize=(12,3))
+for i in range(len(ax)):
+    norm_plot(ax[i],X_norm[:,i],)
+    ax[i].set_xlabel(X_features[i])
+ax[0].set_ylabel("count"); 
+fig.suptitle("distribution of features after normalization")
+plt.show()
+
+# normalized data for x-axis is centered around 0 now
+
+# re-run gradient descent with normalized data
+# choose a much larger alpha
+alpha = 0.1
+iterations = 1000
+w_norm, b_norm, hist = run_gradient_descent(X_norm, y_train, iterations, alpha)
 
 

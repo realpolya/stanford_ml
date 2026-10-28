@@ -462,7 +462,12 @@ def gradient_descent_houses(X, y, w_in, b_in, cost_function, gradient_function, 
         if i% math.ceil(num_iters/10) == 0:
             #print(f"Iteration {i:4d}: Cost {cost_function(X, y, w, b):8.2f}   ")
             cst = cost_function(X, y, w, b)
-            print(f"{i:9d} {cst:0.5e} {w[0]: 0.1e} {w[1]: 0.1e} {w[2]: 0.1e} {w[3]: 0.1e} {b: 0.1e} {dj_dw[0]: 0.1e} {dj_dw[1]: 0.1e} {dj_dw[2]: 0.1e} {dj_dw[3]: 0.1e} {dj_db: 0.1e}")
+
+            # display normal numbers
+            print(f"{i:9d} {cst:12.3f} {w[0]:10.3f} {w[1]:10.3f} {w[2]:10.3f} {w[3]:10.3f} {b:10.3f} {dj_dw[0]:10.3f} {dj_dw[1]:10.3f} {dj_dw[2]:10.3f} {dj_dw[3]:10.3f} {dj_db:10.3f}")
+            
+            # display scientific notation
+            # print(f"{i:9d} {cst:0.5e} {w[0]: 0.1e} {w[1]: 0.1e} {w[2]: 0.1e} {w[3]: 0.1e} {b: 0.1e} {dj_dw[0]: 0.1e} {dj_dw[1]: 0.1e} {dj_dw[2]: 0.1e} {dj_dw[3]: 0.1e} {dj_db: 0.1e}")
        
     return w, b, hist #return w,b and history for graphing
 
