@@ -180,3 +180,6 @@ print("normalized x house is: ", x_house_norm)
 x_house_predict_price = np.dot(x_house_norm, w_norm) + b_norm
 
 print(f"predicted price of a house with 1200 sqft, 3 bedrooms, 1 floor, 40 years old = ${x_house_predict_price*1000:0.0f}")
+
+# compare not normalized and normalized contour plots
+plt_equal_scale(X_train, X_norm, y_train)
