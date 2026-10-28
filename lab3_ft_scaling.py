@@ -119,22 +119,24 @@ print(f"Peak to Peak range by column in Raw        X:{np.ptp(X_train,axis=0)}")
 print(f"Peak to Peak range by column in Normalized X:{np.ptp(X_norm,axis=0)}")
 
 # plot the distribution before normalization
-fig,ax=plt.subplots(1, 4, figsize=(12, 3))
-for i in range(len(ax)):
-    norm_plot(ax[i],X_train[:,i],)
-    ax[i].set_xlabel(X_features[i])
-ax[0].set_ylabel("count");
-fig.suptitle("distribution of features before normalization")
-plt.show()
+# TODO: uncomment below
+# fig,ax=plt.subplots(1, 4, figsize=(12, 3))
+# for i in range(len(ax)):
+#     norm_plot(ax[i],X_train[:,i],)
+#     ax[i].set_xlabel(X_features[i])
+# ax[0].set_ylabel("count");
+# fig.suptitle("distribution of features before normalization")
+# plt.show()
 
 # plot the distribution after normalization
-fig,ax=plt.subplots(1,4,figsize=(12,3))
-for i in range(len(ax)):
-    norm_plot(ax[i],X_norm[:,i],)
-    ax[i].set_xlabel(X_features[i])
-ax[0].set_ylabel("count"); 
-fig.suptitle("distribution of features after normalization")
-plt.show()
+# TODO: uncomment below
+# fig,ax=plt.subplots(1,4,figsize=(12,3))
+# for i in range(len(ax)):
+#     norm_plot(ax[i],X_norm[:,i],)
+#     ax[i].set_xlabel(X_features[i])
+# ax[0].set_ylabel("count"); 
+# fig.suptitle("distribution of features after normalization")
+# plt.show()
 
 # normalized data for x-axis is centered around 0 now
 
@@ -144,4 +146,37 @@ alpha = 0.1
 iterations = 1000
 w_norm, b_norm, hist = run_gradient_descent(X_norm, y_train, iterations, alpha)
 
+#predict target using normalized features
+m = X_norm.shape[0]
+yp = np.zeros(m)
+for i in range(m):
+    yp[i] = np.dot(X_norm[i], w_norm) + b_norm
 
+# plot predictions and targets versus original features  
+# TODO: uncomment below to see the plot  
+# fig,ax=plt.subplots(1,4,figsize=(12, 3),sharey=True)
+# for i in range(len(ax)):
+#     ax[i].scatter(X_train[:,i],y_train, label = 'target')
+#     ax[i].set_xlabel(X_features[i])
+#     ax[i].scatter(X_train[:,i],yp,color=dlc["dlorange"], label = 'predict')
+# ax[0].set_ylabel("Price"); ax[0].legend();
+# fig.suptitle("target versus prediction using z-score normalized model")
+# plt.show()
+
+# NOTE for other houses
+# if you train your linear regression model using normalized features, 
+# you must also normalize the features of any new house 
+# before predicting its price
+
+# predict the price for a new house not in a data set
+x_house = np.array([1200, 3, 1, 40]) 
+
+# normalize the x house
+x_house_norm = (x_house - X_mu) / X_sigma
+
+print("normalized x house is: ", x_house_norm)
+
+# run the prediction
+x_house_predict_price = np.dot(x_house_norm, w_norm) + b_norm
+
+print(f"predicted price of a house with 1200 sqft, 3 bedrooms, 1 floor, 40 years old = ${x_house_predict_price*1000:0.0f}")
