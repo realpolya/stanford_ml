@@ -52,3 +52,21 @@ _,_,hist = run_gradient_descent(X_train, y_train, 10, alpha = 1e-7)
 # dj_w0 is negative throughout this run
 plot_cost_i_w(X_train,y_train,hist)
 
+# feature scaling
+
+# implement z-score normalization first
+def zscore_normalize_features(X):
+    '''
+    computes X, zscore normalized by column
+
+    Args:
+        X – ndarray of shape (m,n) – input data with m examples and n features
+
+    Returns:
+        X_norm – ndarray of shape (m,n) – input data normalized by column
+        mu – ndarray of shape (n,) – mean of each feature
+        sigma – ndarray of shape (n,) – standard deviation of each feature
+    '''
+
+    # find the mean of each column/feature
+    mu = np.mean(X, axis=0)
