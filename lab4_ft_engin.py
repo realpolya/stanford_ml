@@ -100,10 +100,22 @@ alpha = 1e-1
 
 model_w, model_b = run_gradient_descent_feng(X, y, iterations, alpha)
 
-plt.scatter(x, y, marker='x', c='r', label="Actual Value"); plt.title("Normalized x x**2, x**3 feature")
-plt.plot(x,X@model_w + model_b, label="Predicted Value"); plt.xlabel("x"); plt.ylabel("y"); plt.legend(); plt.show()
+# plt.scatter(x, y, marker='x', c='r', label="Actual Value"); plt.title("Normalized x x**2, x**3 feature")
+# plt.plot(x,X@model_w + model_b, label="Predicted Value"); plt.xlabel("x"); plt.ylabel("y"); plt.legend(); plt.show()
 
 # resulting weights
 # w = [0.0000527, 113, 0.0000843]
 # 113 emphasizes x squared as the dominant relationship
 
+# --------- complex functions -------------
+x = np.arange(0,20,1)
+y = np.cos(x/2)
+
+# very crazy function!!!
+X = np.c_[x, x**2, x**3,x**4, x**5, x**6, x**7, x**8, x**9, x**10, x**11, x**12, x**13]
+X = zscore_normalize_features(X) 
+
+model_w,model_b = run_gradient_descent_feng(X, y, iterations=1000000, alpha = 1e-1)
+
+plt.scatter(x, y, marker='x', c='r', label="Actual Value"); plt.title("Normalized x x**2, x**3 feature")
+plt.plot(x,X@model_w + model_b, label="Predicted Value"); plt.xlabel("x"); plt.ylabel("y"); plt.legend(); plt.show()
