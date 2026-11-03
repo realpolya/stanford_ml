@@ -35,3 +35,45 @@ def compute_cost(x, y, w, b):
     ### END CODE HERE ### 
 
     return total_cost
+
+
+# UNQ_C2
+# GRADED FUNCTION: compute_gradient
+def compute_gradient(x, y, w, b): 
+    """
+    Computes the gradient for linear regression 
+    Args:
+      x (ndarray): Shape (m,) Input to the model (Population of cities) 
+      y (ndarray): Shape (m,) Label (Actual profits for the cities)
+      w, b (scalar): Parameters of the model  
+    Returns
+      dj_dw (scalar): The gradient of the cost w.r.t. the parameters w
+      dj_db (scalar): The gradient of the cost w.r.t. the parameter b     
+     """
+    
+    # Number of training examples
+    m = x.shape[0]
+    
+    # You need to return the following variables correctly
+    dj_dw = 0
+    dj_db = 0
+    
+    ### START CODE HERE ###
+    
+    # only one feature w
+    
+    # loop over m examples
+    for i in range(m):
+        
+        err = (np.dot(x[i], w) + b) - y[i]
+        
+        dj_dw += err * x[i]
+        dj_db += err # no need to multiply by x
+    
+    # divide by number of examples
+    dj_dw /= m
+    dj_db /= m
+    
+    ### END CODE HERE ### 
+        
+    return dj_dw, dj_db
