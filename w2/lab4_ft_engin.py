@@ -2,6 +2,10 @@
 Lab 4: Feature Engineering and Polynomial Regression
 '''
 
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent))  # must come before the lab_utils imports
+
 import numpy as np
 import matplotlib.pyplot as plt
 from lab_utils_multi import zscore_normalize_features, run_gradient_descent_feng

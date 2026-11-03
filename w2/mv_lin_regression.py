@@ -1,12 +1,21 @@
 # multiple variable linear regression lab
 # October 22, 2026
 
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent))  # must come before the lab_utils imports
+
 import copy, math
 import numpy as np
 import matplotlib.pyplot as plt
 
 # set the graph style
-plt.style.use('./deeplearning.mplstyle')
+from pathlib import Path
+
+project_dir = Path(__file__).resolve().parent.parent
+
+plt.style.use(project_dir / "deeplearning.mplstyle")
+# plt.style.use('./deeplearning.mplstyle')
 
 # reduce display precision on numpy arrays
 np.set_printoptions(precision=2)

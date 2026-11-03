@@ -12,7 +12,14 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import axes3d
 from matplotlib.ticker import MaxNLocator
 dlblue = '#0096ff'; dlorange = '#FF9300'; dldarkred='#C00000'; dlmagenta='#FF40FF'; dlpurple='#7030A0'; 
-plt.style.use('./deeplearning.mplstyle')
+
+
+# plt.style.use('./deeplearning.mplstyle')
+from pathlib import Path
+
+style_path = Path(__file__).resolve().parent / 'deeplearning.mplstyle'
+
+plt.style.use(style_path)
 
 def load_data_multi():
     data = np.loadtxt("data/ex1data2.txt", delimiter=',')
@@ -465,7 +472,7 @@ def gradient_descent_houses(X, y, w_in, b_in, cost_function, gradient_function, 
 
             # display normal numbers
             print(f"{i:9d} {cst:12.3f} {w[0]:10.3f} {w[1]:10.3f} {w[2]:10.3f} {w[3]:10.3f} {b:10.3f} {dj_dw[0]:10.3f} {dj_dw[1]:10.3f} {dj_dw[2]:10.3f} {dj_dw[3]:10.3f} {dj_db:10.3f}")
-            
+
             # display scientific notation
             # print(f"{i:9d} {cst:0.5e} {w[0]: 0.1e} {w[1]: 0.1e} {w[2]: 0.1e} {w[3]: 0.1e} {b: 0.1e} {dj_dw[0]: 0.1e} {dj_dw[1]: 0.1e} {dj_dw[2]: 0.1e} {dj_dw[3]: 0.1e} {dj_db: 0.1e}")
        
@@ -560,7 +567,12 @@ def gradient_descent(X, y, w_in, b_in, cost_function, gradient_function, alpha, 
     return w, b, hist #return w,b and history for graphing
 
 def load_house_data():
-    data = np.loadtxt("./data/houses.txt", delimiter=',', skiprows=1)
+
+    data_path = Path(__file__).resolve().parent / "data" / "houses.txt"
+
+    data = np.loadtxt(data_path, delimiter=',', skiprows=1)
+
+    # data = np.loadtxt("./data/houses.txt", delimiter=',', skiprows=1)
     X = data[:,:4]
     y = data[:,4]
     return X, y

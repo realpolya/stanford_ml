@@ -1,4 +1,0 @@
-# gradient descent algorithm for linear regression from Stanford's machine learning course
-
-import math, copy
-

@@ -2,6 +2,13 @@
 Practice Lab: Linear Regression
 '''
 
+import numpy as np
+import matplotlib.pyplot as plt
+from utils import *
+import copy
+import math
+# %matplotlib inline
+
 # GRADED FUNCTION: compute_cost
 
 def compute_cost(x, y, w, b): 
