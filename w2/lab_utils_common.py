@@ -12,14 +12,6 @@ import matplotlib.pyplot as plt
 
 plt.style.use('/Users/polinastepanova/Desktop/comp_design_coding/stanford_ml/deeplearning.mplstyle')
 
-# plt.style.use('./deeplearning.mplstyle')
-
-# from pathlib import Path
-
-# style_path = Path(__file__).resolve().parent / 'deeplearning.mplstyle'
-
-# plt.style.use(style_path)
-
 dlblue = '#0096ff'; dlorange = '#FF9300'; dldarkred='#C00000'; dlmagenta='#FF40FF'; dlpurple='#7030A0';
 dlcolors = [dlblue, dlorange, dldarkred, dlmagenta, dlpurple]
 dlc = dict(dlblue = '#0096ff', dlorange = '#FF9300', dldarkred='#C00000', dlmagenta='#FF40FF', dlpurple='#7030A0')

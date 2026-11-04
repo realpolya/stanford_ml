@@ -7,9 +7,6 @@ Oct 27, 2026
 
 '''
 
-# import sys
-# from pathlib import Path
-# sys.path.append(str(Path(__file__).resolve().parent.parent))  # must come before the lab_utils imports
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -19,8 +16,6 @@ np.set_printoptions(precision=2)
 
 plt.style.use('/Users/polinastepanova/Desktop/comp_design_coding/stanford_ml/deeplearning.mplstyle')
 
-
-# plt.style.use(str(Path(__file__).resolve().parent.parent / 'deeplearning.mplstyle'))
 
 # 4 features – size, bedrooms, floors, and age
 # prediction – housing price

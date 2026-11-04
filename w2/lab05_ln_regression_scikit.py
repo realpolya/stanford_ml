@@ -4,10 +4,6 @@ Lab 4: Linear Regression using Scikit-Learn
 use scikit learn to implement gradient descent
 '''
 
-# import sys
-# from pathlib import Path
-# sys.path.append(str(Path(__file__).resolve().parent.parent))  # must come before the lab_utils imports
-
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import SGDRegressor
@@ -18,14 +14,6 @@ from lab_utils_common import dlc
 np.set_printoptions(precision=2)
 
 plt.style.use('/Users/polinastepanova/Desktop/comp_design_coding/stanford_ml/deeplearning.mplstyle')
-
-# from pathlib import Path
-
-# project_dir = Path(__file__).resolve().parent.parent
-
-# plt.style.use(project_dir / "deeplearning.mplstyle")
-
-# plt.style.use('./deeplearning.mplstyle')
 
 # StandardScaler is used to normalize data
 # SGDRegressor does gradient descent and performs best with normalized inputs
