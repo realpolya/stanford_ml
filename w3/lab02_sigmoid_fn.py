@@ -60,3 +60,27 @@ y = sigmoid_fn(z_tmp)
 np.set_printoptions(precision=3) 
 print("Input (z), Output (sigmoid(z))")
 print(np.c_[z_tmp, y])
+
+# Plot z vs sigmoid(z)
+fig,ax = plt.subplots(1,1,figsize=(5,3))
+ax.plot(z_tmp, y, c="b")
+
+ax.set_title("Sigmoid function")
+ax.set_ylabel('sigmoid(z)')
+ax.set_xlabel('z')
+draw_vthresh(ax,0)
+
+plt.show()
+
+# sigmoid function remaps the result we get from linear regression
+# into probability between 0 and 1
+
+# tumor classification
+x_train = np.array([0., 1, 2, 3, 4, 5])
+y_train = np.array([0,  0, 0, 1, 1, 1])
+
+w_in = np.zeros((1))
+b_in = 0
+
+plt.close('all') 
+# addpt = plt_one_addpt_onclick( x_train,y_train, w_in, b_in, logistic=True)
