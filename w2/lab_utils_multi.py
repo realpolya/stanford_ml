@@ -14,12 +14,14 @@ from matplotlib.ticker import MaxNLocator
 dlblue = '#0096ff'; dlorange = '#FF9300'; dldarkred='#C00000'; dlmagenta='#FF40FF'; dlpurple='#7030A0'; 
 
 
+plt.style.use('/Users/polinastepanova/Desktop/comp_design_coding/stanford_ml/deeplearning.mplstyle')
+
 # plt.style.use('./deeplearning.mplstyle')
-from pathlib import Path
+# from pathlib import Path
 
-style_path = Path(__file__).resolve().parent / 'deeplearning.mplstyle'
+# style_path = Path(__file__).resolve().parent / 'deeplearning.mplstyle'
 
-plt.style.use(style_path)
+# plt.style.use(style_path)
 
 def load_data_multi():
     data = np.loadtxt("data/ex1data2.txt", delimiter=',')
@@ -568,11 +570,11 @@ def gradient_descent(X, y, w_in, b_in, cost_function, gradient_function, alpha, 
 
 def load_house_data():
 
-    data_path = Path(__file__).resolve().parent / "data" / "houses.txt"
+    # data_path = Path(__file__).resolve().parent / "data" / "houses.txt"
 
-    data = np.loadtxt(data_path, delimiter=',', skiprows=1)
+    # data = np.loadtxt(data_path, delimiter=',', skiprows=1)
 
-    # data = np.loadtxt("./data/houses.txt", delimiter=',', skiprows=1)
+    data = np.loadtxt("./data/houses.txt", delimiter=',', skiprows=1)
     X = data[:,:4]
     y = data[:,4]
     return X, y

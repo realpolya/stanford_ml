@@ -9,7 +9,7 @@ Week 3 Lab 02 – Sigmoid Function & Logistic Regression
 import numpy as np
 import matplotlib.pyplot as plt
 from plt_one_addpt_onclick import plt_one_addpt_onclick
-from lab_utils_common import draw_vthresh
+from w2.lab_utils_common import draw_vthresh
 
 # plt.style.use(str(Path(__file__).resolve().parent.parent / 'deeplearning.mplstyle'))
 

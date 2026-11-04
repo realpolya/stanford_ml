@@ -4,9 +4,9 @@ Lab 4: Linear Regression using Scikit-Learn
 use scikit learn to implement gradient descent
 '''
 
-import sys
-from pathlib import Path
-sys.path.append(str(Path(__file__).resolve().parent.parent))  # must come before the lab_utils imports
+# import sys
+# from pathlib import Path
+# sys.path.append(str(Path(__file__).resolve().parent.parent))  # must come before the lab_utils imports
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -17,11 +17,13 @@ from lab_utils_common import dlc
 
 np.set_printoptions(precision=2)
 
-from pathlib import Path
+plt.style.use('/Users/polinastepanova/Desktop/comp_design_coding/stanford_ml/deeplearning.mplstyle')
 
-project_dir = Path(__file__).resolve().parent.parent
+# from pathlib import Path
 
-plt.style.use(project_dir / "deeplearning.mplstyle")
+# project_dir = Path(__file__).resolve().parent.parent
+
+# plt.style.use(project_dir / "deeplearning.mplstyle")
 
 # plt.style.use('./deeplearning.mplstyle')
 
