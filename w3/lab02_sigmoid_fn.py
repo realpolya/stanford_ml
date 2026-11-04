@@ -3,6 +3,8 @@ Week 3 Lab 02 – Sigmoid Function & Logistic Regression
 """
 
 import numpy as np
+np.set_printoptions(suppress=True, precision=6)
+
 import matplotlib.pyplot as plt
 from plt_one_addpt_onclick import plt_one_addpt_onclick
 from lab_utils_common import draw_vthresh
@@ -35,3 +37,26 @@ exp_val = np.exp(input_val)
 print("Input to exp:", input_val)
 print("Output of exp:", exp_val)
 
+# write sigmoid function for both scalar and vector z
+def sigmoid_fn(z):
+    '''
+    Compute the sigmoid of z
+
+    args: z – ndarray – a scalar or numpy array of any size
+    returns: g – ndarray – sigmoid(z) with the same shape as z
+    '''
+
+    g = 1/(1+np.exp(-z))
+
+    return g
+
+# Generate an array of evenly spaced values between -10 and 10
+z_tmp = np.arange(-10,11)
+
+# Use the function implemented above to get the sigmoid values
+y = sigmoid_fn(z_tmp)
+
+# Code for pretty printing the two arrays next to each other
+np.set_printoptions(precision=3) 
+print("Input (z), Output (sigmoid(z))")
+print(np.c_[z_tmp, y])
